@@ -14,3 +14,4 @@ csv = "1.2.2"
 neuroflow = { git = "https://github.com/jaedson-barbosa/neuro-flow-core.git" }
 plotters = "0.3.5"
 plotters-bitmap = "0.3.3"
+plotters-svg = "0.3.5"

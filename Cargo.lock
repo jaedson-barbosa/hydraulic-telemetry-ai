@@ -386,6 +386,7 @@ dependencies = [
  "neuroflow",
  "plotters",
  "plotters-bitmap",
+ "plotters-svg",
  "postcard",
  "rand",
  "serde",
