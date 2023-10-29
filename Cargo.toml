@@ -12,3 +12,5 @@ postcard = "1.0.8"
 rand = "0.8.5"
 csv = "1.2.2"
 neuroflow = { git = "https://github.com/jaedson-barbosa/neuro-flow-core.git" }
+plotters = "0.3.5"
+plotters-bitmap = "0.3.3"

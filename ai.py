@@ -3,14 +3,14 @@ from sklearn.model_selection import train_test_split
 import tensorflow as tf
 from tensorflow import keras
 
-with open('data1.json', 'r') as file:
-    data0 = json.load(file)
+with open('data/data0.json', 'r') as file:
+    data = json.load(file)
 
 X_train = []
 y_train = []
 
 last_value = None
-for item in data0:
+for item in data:
     print(item)
     max
     adc_state = item.get('adc_state')
@@ -23,17 +23,17 @@ for item in data0:
         time_sec = item.get('time_sec')
         X_train.append([battery_mv, ldo_in_mv, last_value])
         last_value = battery_mv
-        percentage = (17000 - time_sec) / 17000
+        percentage = (15435 - time_sec) / 15435
         y_train.append(percentage)
 
 X_test = []
 y_test = []
 
-with open('data0.json', 'r') as file:
-    data1 = json.load(file)
+with open('data/data1.json', 'r') as file:
+    data = json.load(file)
 
 last_value = None
-for item in data0:
+for item in data:
     print(item)
     adc_state = item.get('adc_state')
     if adc_state:
@@ -45,14 +45,13 @@ for item in data0:
         time_sec = item.get('time_sec')
         X_test.append([battery_mv, ldo_in_mv, last_value])
         last_value = battery_mv
-        percentage = (17000 - time_sec) / 17000
+        percentage = (20466 - time_sec) / 20466
         y_test.append(percentage)
 
 # Construir o modelo
 model = keras.Sequential([
-    keras.layers.Dense(3, activation='relu', input_shape=(3,)),
-    keras.layers.Dense(8, activation='relu'),
-    keras.layers.Dense(3, activation='relu'),
+    keras.layers.Dense(3, activation='tanh', input_shape=(3,)),
+    keras.layers.Dense(3, activation='tanh'),
     keras.layers.Dense(1, activation='linear')
 ])
 
@@ -73,6 +72,6 @@ y_pred = model.predict(X_test)
 plt.figure(figsize=(8, 6))
 plt.plot(y_test)
 plt.plot(y_pred, linestyle = 'dotted')
-plt.
+plt.ylabel("soc")
 plt.title('Comparação entre Valores Reais e Previsões do Modelo')
 plt.show()
